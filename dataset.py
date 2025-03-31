@@ -27,10 +27,10 @@ class RNACustomDataset(Dataset):
         nii_image = nib.load(img_path)
         image_volume = nii_image.get_fdata()
 
-        # 选取中间的 z 轴切片
+
         mid_slice = image_volume[:, :, image_volume.shape[2] // 2]
 
-        # 构造伪RGB
+
         rgb_slice = np.stack([mid_slice] * 3, axis=-1)
         image = Image.fromarray(np.uint8(rgb_slice))
 
